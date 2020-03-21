@@ -1,6 +1,7 @@
 import sqlite3
 from beem.block import Block
 from beem.steem import Steem
+import time as timess
 
 con = sqlite3.connect('daili52.db')
 cur = con.cursor()
@@ -9,7 +10,7 @@ cur = con.cursor()
 s = Steem("https://api.steemit.com")
 
 #读取日志
-number_block=21940000
+number_block=22369000
 end_block=22500000-1
 
 print("开始区块:",number_block)
@@ -65,4 +66,4 @@ while p==1:
         with open('error.txt', "w") as f:
             f.write(txt)
         print("等待15秒后继续")
-        time.sleep(15)
+        timess.sleep(15)
