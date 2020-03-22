@@ -8,8 +8,8 @@ class Who(tornado.web.RequestHandler):
         """get请求"""
         ids = self.get_argument('id')
         hash = self.get_argument('hash')
-        if hash == "7DFC55A884A937A8AB81CD1EBAB3385E":
-            con = sqlite3.connect('daili13.db')
+        if hash == "7DFxxxxxxxxxxxxxxxxxxxx":
+            con = sqlite3.connect('steemdatabase.db')
             cur = con.cursor()
             whois = 'select * from daili where name like "%s"' % ids
             cur.execute(whois)
@@ -31,7 +31,7 @@ class Towho(tornado.web.RequestHandler):
         ids = self.get_argument('id')
         hash = self.get_argument('hash')
         if hash == "7DFC55A884A937A8AB81CD1EBAB3385E":
-            con = sqlite3.connect('daili13.db')
+            con = sqlite3.connect('steemdatabase.db')
             cur = con.cursor()
             whois = 'select * from daili where towho like "%s"' % ids
             cur.execute(whois)
@@ -52,6 +52,3 @@ application = tornado.web.Application([(r"/who", Who),(r"/towho", Towho) ])
 if __name__ == "__main__":
     application.listen(666)
     tornado.ioloop.IOLoop.instance().start()
-
-#http://127.0.0.1:666/who?id=neoxian&hash=7DFC55A884A937A8AB81CD1EBAB3385E
-#http://127.0.0.1:666/towho?id=raimo&hash=7DFC55A884A937A8AB81CD1EBAB3385E
